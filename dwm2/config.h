@@ -42,10 +42,8 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "togg
 
 
 /* To use light add this to the constant definition section. Thanks Hritik14. */
-static const char *light_up[] = {"/usr/bin/light", "-A", "5", NULL};
-static const char *light_down[] = {"/usr/bin/light", "-U", "5", NULL};
-
-
+//static const char *brightness_up[]  =   { "cwm-brightness", "up", NULL  };
+//static const char *brightness_down[]  = { "cwm-brightness", "down", NULL  };
 
 
 
@@ -80,13 +78,15 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const Key keys[] = {
-    { 0,				XF86XK_MonBrightnessUp,		spawn,	{.v = light_up} },
-	{ 0,				XF86XK_MonBrightnessDown,	spawn,	{.v = light_down} },
+ //   { 0,                 XKB_KEY_XF86MonBrightnessUp,  spawn,   {.v = brightness_up} },
+   // { 0,                 XKB_KEY_XF86MonBrightnessDown, spawn   {.v = brightness_down} },
+//    { 0,				XF86XK_MonBrightnessUp,		spawn,	{.v = light_up} },
+//	{ 0,				XF86XK_MonBrightnessDown,	spawn,	{.v = light_down} },
     { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = roficmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
